@@ -4,18 +4,18 @@ const path = require('path');
 const app = express();
 
 app.listen(9000, () => {
-    console.log('Server is running on port: 9000');
+  console.log('Server is running on port: 9000');
   });
 
 app.use((req, res, next) => {
   res.show = (name) => {
-    res.sendFile(path.join(__dirname, `/views/${name}`));
+  res.sendFile(path.join(__dirname, `/views/${name}`));
   };
   next();
 });
 
-app.use('/user/', (req, res, next) => {
-    res.show('forbidden.html');
+app.use('/user', (req, res) => {
+  res.show('forbidden.html');
   });
 
 app.get('/', (req, res) => {
@@ -35,5 +35,5 @@ app.get('/info', (req, res) => {
 });
 
 app.use((req, res) => {
-  res.status(404).show('test.png');
+  res.status(404).show('../public/test.png');
 });
