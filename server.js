@@ -5,7 +5,7 @@ const app = express();
 
 app.listen(9000, () => {
   console.log('Server is running on port: 9000');
-  });
+});
 
 app.use((req, res, next) => {
   res.show = (name) => {
@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 
 app.use('/user', (req, res) => {
   res.show('forbidden.html');
-  });
+});
 
 app.get('/', (req, res) => {
   res.show('home.html');
